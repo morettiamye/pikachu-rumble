@@ -1,60 +1,56 @@
-const pikachu = document.querySelector(".pikachu");
-const opponent = document.querySelector(".opponent");
+const pikachuDiv = document.querySelector(".pikachu");
+const opponentDiv = document.querySelector(".opponent");
 const path = "assets/images/"
+
 const pokemonArray = [ 
     {
     image: "charmander.png",
     name: "Charmander",
-    type: "Fire"
+    type: "Fire",
+    hp: Math.floor((Math.random() * 30) + 1),
+    attack: Math.floor((Math.random() * 10) + 1),
+    defense: Math.floor((Math.random() * 10) + 1) * 2
     },
     { 
     image: "squirtle.png",
     name: "Squirtle",
-    type: "Water"
+    type: "Water",
+    hp: Math.floor((Math.random() * 30) + 1),
+    attack: Math.floor((Math.random() * 10) + 1) * .5,
+    defense: Math.floor((Math.random() * 10) + 1) * .5
     },
     {
     image: "bulbasaur.png",
     name: "Bulbasaur",
-    type: "Grass"
+    type: "Grass",
+    hp: Math.floor((Math.random() * 30) + 1),
+    attack: Math.floor((Math.random() * 10) + 1),
+    defense: Math.floor((Math.random() * 10) + 1) * 2
+    },
+    {
+    image: "pikachu.png",
+    name: "Pikachu",
+    type: "Electric",
+    hp: Math.floor((Math.random() * 30) + 1),
+    attack: Math.floor((Math.random() * 10) + 1),
+    defense: Math.floor((Math.random() * 10) + 1)
     }
 ]
 
-function randomOpponent(){
-    random = pokemonArray[Math.floor(Math.random() * pokemonArray.length)];
-   
-   const image = new Image();
-   image.src = path + random.image;
-   image.alt = "Pokemon"
-   opponent.appendChild(image);
+random = pokemonArray[Math.floor(Math.random() * (pokemonArray.length -1))];
+opponentDiv.innerHTML = `<p>HP: ${random.hp}</p>`;
+opponentImage = new Image();
+opponentImage.src = path + random.image;
+opponentImage.alt = random.name;
+opponentDiv.appendChild(opponentImage);
 
-   opponentType = random.type;
-   let attackStat = 0;
-   let defenseStat = 0;
 
-   switch (opponentType) {
-       case "Fire":
-        attackStat = Math.floor((Math.random() * 10) + 1);
-        defenseStat = Math.floor((Math.random() * 10) + 1) * 2;
-        break;
-
-        case "Water": 
-        attackStat = Math.floor((Math.random() * 10) + 1) * .5;
-        defenseStat = Math.floor((Math.random() * 10) + 1) * .5;
-        break;
-
-        case "Grass":
-        attackStat = Math.floor((Math.random() * 10) + 1);
-        defenseStat = Math.floor((Math.random() * 10) + 1) * 2;
-        break;
-
-        default:
-        console.log("Error");
-    }
-
-    console.log(attackStat + "" + " " + defenseStat);
-
-}
+const pikachu = pokemonArray[3];    
+pikachuDiv.innerHTML = `<p>HP: ${pikachu.hp}</p>`;
+const pikachuImage = new Image();
+pikachuImage.src = path + pikachu.image;
+pikachuImage.alt = pikachu.name;
+pikachuDiv.appendChild(pikachuImage);
 
 
 
-randomOpponent();
