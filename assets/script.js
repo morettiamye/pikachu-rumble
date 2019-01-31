@@ -81,7 +81,11 @@ function checkStatus(){
     }
 }
 
+function reload(){
+    location.reload(true);
+}
+
 attackButton.addEventListener("click", attack);
-resetButton.addEventListener("click", document.reload);
+resetButton.addEventListener("click", reload);
 
 
